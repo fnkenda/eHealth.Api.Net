@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("eHealth.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+45df4f7af3ef4fb4cb8d30da282543a5698792c5")]
 [assembly: System.Reflection.AssemblyProductAttribute("eHealth.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("eHealth.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

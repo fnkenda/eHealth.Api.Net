@@ -11,6 +11,8 @@ namespace eHealth.Api.Data
 
         public DbSet<Medecin> medecins { get; set; }
 
+        public DbSet<Clinique> cliniques { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //base.OnModelCreating(modelBuilder);
@@ -20,6 +22,8 @@ namespace eHealth.Api.Data
                     new Medecin { IdMedecin = 2, Nom = "Barry", Prenom = "Thierno", Specialite = "Orthopediste" },
                     new Medecin { IdMedecin = 3, Nom = "Nkenda", Prenom = "Florent", Specialite = "Orl" }
                 );
+
+            modelBuilder.Entity<Clinique>();
         }
 
     }

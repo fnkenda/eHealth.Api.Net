@@ -14,7 +14,7 @@ namespace eHealth.Api.Controllers
         public MedecinsController(IEhealthRepository ehealthRepository)
         {
             repository = ehealthRepository;
-            _medecins = repository.GetAll();
+            _medecins = repository.GetAllMedecin();
         }
 
         [HttpGet("/api/medecins")]

@@ -125,3 +125,4 @@ C:\Florent\Perso\DevOps Engineer\Logiciel\Projects\eHealth\eHeath\eHealth.Api\ob
 C:\Florent\Perso\DevOps Engineer\Logiciel\Projects\eHealth\eHeath\eHealth.Api\obj\Debug\net8.0\eHealth.Api.pdb
 C:\Florent\Perso\DevOps Engineer\Logiciel\Projects\eHealth\eHeath\eHealth.Api\obj\Debug\net8.0\eHealth.Api.genruntimeconfig.cache
 C:\Florent\Perso\DevOps Engineer\Logiciel\Projects\eHealth\eHeath\eHealth.Api\obj\Debug\net8.0\ref\eHealth.Api.dll
+C:\Florent\Perso\DevOps Engineer\Logiciel\Projects\eHealth\eHeath\eHealth.Api\obj\Debug\net8.0\eHealth.Api.sourcelink.json

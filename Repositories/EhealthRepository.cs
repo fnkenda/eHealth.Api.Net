@@ -1,5 +1,6 @@
 ﻿using eHealth.Api.Data;
 using eHealth.Api.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace eHealth.Api.Repositories
 {
@@ -12,7 +13,8 @@ namespace eHealth.Api.Repositories
             _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
-        public void AddMedecin(Medecin medecin)
+		#region Medecin
+		public void AddMedecin(Medecin medecin)
         {
             _context.medecins.Add(medecin);
             _context.SaveChanges();
@@ -28,7 +30,7 @@ namespace eHealth.Api.Repositories
             return false;
         }
 
-        public List<Medecin> GetAll()
+        public List<Medecin> GetAllMedecin()
         {
             return _context.medecins.ToList();
         }
@@ -39,5 +41,39 @@ namespace eHealth.Api.Repositories
         }
 
 
-    }
+		#endregion
+
+		#region Clinique
+
+		public void AddClinique(Clinique clinique)
+		{
+			_context.cliniques.Add(clinique);
+			_context.SaveChanges();
+		}
+
+		public bool DeleteClinique(Clinique clinique)
+		{
+			var deletedClinique = _context.cliniques.Remove(clinique);
+			_context.SaveChanges();
+			if (deletedClinique.State == Microsoft.EntityFrameworkCore.EntityState.Deleted)
+			{
+				return true;
+			}
+			return false;
+		}
+
+		public List<Clinique> GetAllClinique()
+		{
+			return _context.cliniques.Include(c => c.medecins).ToList();
+		}
+
+		public Clinique GetCliniqueById(int? id)
+		{
+			return _context.cliniques.Include(c => c.medecins).FirstOrDefault(m => m.IdClinique == id);
+		}
+
+
+		#endregion
+
+	}
 }
