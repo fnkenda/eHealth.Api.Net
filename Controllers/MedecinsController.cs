@@ -60,7 +60,7 @@ namespace eHealth.Api.Controllers
             if (ModelState.IsValid)
             {
 
-                int _medecinsId = _medecins.Max(m => m.IdMedecin) + 1;
+                int _medecinsId = (_medecins.Count == 0) ? 1 : _medecins.Max(m => m.IdMedecin) + 1;
                 repository.AddMedecin(new Medecin
                 {
                     IdMedecin = _medecinsId,

@@ -1,0 +1,5 @@
+*.eHealth.db-shm
+eHealth.db-shm
+eHealth.db-wal
+obj/
+bin/

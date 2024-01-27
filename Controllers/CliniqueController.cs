@@ -69,11 +69,10 @@ namespace eHealth.Api.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-
-				int _medecinsId = _cliniques.Max(m => m.IdClinique) + 1;
+				int _cliniqueId = (_cliniques.Count == 0) ? 1 : _cliniques.Max(m => m.IdClinique) + 1;
 				repository.AddClinique(new Clinique
 				{
-					IdClinique = _medecinsId,
+					IdClinique = _cliniqueId,
 					Nom = clinique.Nom,
 					Adresse = clinique.Adresse,
 					Telephone = clinique.Telephone
