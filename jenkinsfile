@@ -9,7 +9,7 @@ pipeline {
             steps {
                 echo "Build Started"
                 
-                sh 'dotnet build' 
+                sh 'dotnet build eHealth.Api.csproj' 
 
                 echo "Build Finished"
             }
