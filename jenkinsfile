@@ -1,0 +1,71 @@
+pipeline {
+    agent {label "dev"}
+    // tools {
+    //     maven "MAVEN"
+    // }
+
+    stages {
+        stage("Build") {
+            steps {
+                echo "Build Started"
+                
+                sh 'dotnet build' 
+
+                echo "Build Finished"
+            }
+        }
+
+
+        // stage("Package") {
+        //     steps {
+        //         echo "Packaging Started"
+
+        //         sh 'sudo chmod -R 777 mvnw'
+
+        //         sh 'sudo ./mvnw package'
+
+        //         echo "Packaging Finished"
+        //     }
+        // }
+
+
+        stage("Docker build") {
+            steps {
+                echo "Buidling Medecin API Dotnet Core docker image"
+
+                sh 'sudo docker build -t ddragueur/ehealth:medecins .'
+
+                echo "Buidling Medecin API Dotnet Core docker image Finished"
+            }
+        }
+
+        stage("Docker hub push image") {
+            steps {
+                echo "Buidling Medecin API Dotnet docker image"
+
+                sh 'cat dockerpass |sudo docker login -u dredger.dragueur@gmail.com --password-stdin'
+
+                sh 'sudo docker push ddragueur/ehealth:medecins'
+
+                echo "Buidling Medecin API Dotnet docker image Finished"
+            }
+        }
+
+        // stage("Deploy ehealth on Uat") {
+        //     agent {label "uat"}
+        //     steps {
+        //         echo "Deploying ehealth on UAT"
+
+        //         sh 'cat dockerpass |sudo docker login -u dredger.dragueur@gmail.com --password-stdin'
+
+        //         sh 'sudo docker network create eHealthNet'
+
+        //         sh 'sudo docker compose up -d'
+
+        //         echo "Deploying ehealth on UAT Finished"
+        //     }
+        // }
+
+
+    }
+}
