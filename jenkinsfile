@@ -43,7 +43,7 @@ pipeline {
             steps {
                 echo "Buidling Medecin API Dotnet docker image"
 
-                sh 'cat dockerpass |sudo docker login -u dredger.dragueur@gmail.com --password-stdin'
+                sh 'cat dockpass |sudo docker login -u dredger.dragueur@gmail.com --password-stdin'
 
                 sh 'sudo docker push ddragueur/ehealth:medecins'
 
