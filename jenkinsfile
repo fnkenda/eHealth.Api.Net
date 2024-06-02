@@ -33,7 +33,7 @@ pipeline {
 
                 sh 'sudo docker login -u ${USERNAME} -p ${PASSWORD}'
 
-                sh 'sudo docker push ddragueur/ehealth:patient'
+                sh 'sudo docker push ddragueur/ehealth:medecins'
 
                 echo "Docker hub push image Finished"
 
