@@ -26,8 +26,9 @@ pipeline {
         }
 
         stage("Docker hub push image") {
-            withCredentials([usernamePassword( credentialsId: 'DockerCredentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')])
             steps {
+                withCredentials([usernamePassword( credentialsId: 'DockerCredentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                    
                 echo "Buidling Patient API Java docker image"
 
                 sh 'sudo docker login -u ${USERNAME} -p ${PASSWORD}'
@@ -35,6 +36,8 @@ pipeline {
                 sh 'sudo docker push ddragueur/ehealth:patient'
 
                 echo "Docker hub push image Finished"
+
+                }
             }
         }
 
