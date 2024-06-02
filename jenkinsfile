@@ -15,20 +15,6 @@ pipeline {
             }
         }
 
-
-        // stage("Package") {
-        //     steps {
-        //         echo "Packaging Started"
-
-        //         sh 'sudo chmod -R 777 mvnw'
-
-        //         sh 'sudo ./mvnw package'
-
-        //         echo "Packaging Finished"
-        //     }
-        // }
-
-
         stage("Docker build") {
             steps {
                 echo "Buidling Medecin API Dotnet Core docker image"
@@ -40,23 +26,26 @@ pipeline {
         }
 
         stage("Docker hub push image") {
+            withCredentials([usernamePassword( credentialsId: 'DockerCredentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')])
             steps {
-                echo "Buidling Medecin API Dotnet docker image"
+                echo "Buidling Patient API Java docker image"
 
-                sh 'cat dockpass |sudo docker login -u dredger.dragueur@gmail.com --password-stdin'
+                sh 'sudo docker login -u ${USERNAME} -p ${PASSWORD}'
 
-                sh 'sudo docker push ddragueur/ehealth:medecins'
+                sh 'sudo docker push ddragueur/ehealth:patient'
 
-                echo "Buidling Medecin API Dotnet docker image Finished"
+                echo "Docker hub push image Finished"
             }
         }
 
+
         // stage("Deploy ehealth on Uat") {
         //     agent {label "uat"}
+        //     withCredentials([usernamePassword( credentialsId: 'DockerCredentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')])
         //     steps {
         //         echo "Deploying ehealth on UAT"
 
-        //         sh 'cat dockerpass |sudo docker login -u dredger.dragueur@gmail.com --password-stdin'
+        //         sh 'sudo docker login -u ${USERNAME} -p ${PASSWORD}'
 
         //         sh 'sudo docker network create eHealthNet'
 
@@ -65,7 +54,6 @@ pipeline {
         //         echo "Deploying ehealth on UAT Finished"
         //     }
         // }
-
 
     }
 }
