@@ -41,7 +41,6 @@ pipeline {
             }
         }
 
-
         // stage("Deploy ehealth on Uat") {
         //     agent {label "uat"}
         //     withCredentials([usernamePassword( credentialsId: 'DockerCredentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')])
