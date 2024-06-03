@@ -29,13 +29,13 @@ pipeline {
             steps {
                 withCredentials([usernamePassword( credentialsId: 'DockerCredentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                     
-                echo "Buidling Patient API Java docker image"
+                    echo "Buidling Patient API Java docker image"
 
-                sh 'sudo docker login -u ${USERNAME} -p ${PASSWORD}'
+                    sh 'sudo docker login -u ${USERNAME} -p ${PASSWORD}'
 
-                sh 'sudo docker push ddragueur/ehealth:medecins'
+                    sh 'sudo docker push ddragueur/ehealth:medecins'
 
-                echo "Docker hub push image Finished"
+                    echo 'Docker hub push image Finished'
 
                 }
             }
